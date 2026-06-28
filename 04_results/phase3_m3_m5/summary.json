@@ -1,0 +1,115 @@
+{
+  "groups": {
+    "M3_dynamic_no_aug|S4_sla_upgrade": {
+      "adaptation_delay": {
+        "mean": null,
+        "n": 0,
+        "std": null
+      },
+      "all_paper_usable": false,
+      "mean_D_proj": {
+        "mean": 96.6,
+        "n": 1,
+        "std": 0.0
+      },
+      "mean_p_min": {
+        "mean": 81.6,
+        "n": 1,
+        "std": 0.0
+      },
+      "n_runs": 1,
+      "p95_D_proj": {
+        "mean": 180.0,
+        "n": 1,
+        "std": 0.0
+      },
+      "p95_p_min": {
+        "mean": 100.0,
+        "n": 1,
+        "std": 0.0
+      },
+      "reward": {
+        "mean": 0.5591838955582739,
+        "n": 1,
+        "std": 0.0
+      },
+      "shield_correction_rate": {
+        "mean": 0.955,
+        "n": 1,
+        "std": 0.0
+      },
+      "train_mean_D_proj": {
+        "mean": 95.5078125,
+        "n": 1,
+        "std": 0.0
+      },
+      "train_violation_rate": {
+        "mean": 0.087890625,
+        "n": 1,
+        "std": 0.0
+      },
+      "urllc_violation_rate": {
+        "mean": 0.125,
+        "n": 1,
+        "std": 0.0
+      }
+    },
+    "M5_constraint_aware|S4_sla_upgrade": {
+      "adaptation_delay": {
+        "mean": null,
+        "n": 0,
+        "std": null
+      },
+      "all_paper_usable": false,
+      "mean_D_proj": {
+        "mean": 126.6,
+        "n": 1,
+        "std": 0.0
+      },
+      "mean_p_min": {
+        "mean": 81.6,
+        "n": 1,
+        "std": 0.0
+      },
+      "n_runs": 1,
+      "p95_D_proj": {
+        "mean": 180.0,
+        "n": 1,
+        "std": 0.0
+      },
+      "p95_p_min": {
+        "mean": 100.0,
+        "n": 1,
+        "std": 0.0
+      },
+      "reward": {
+        "mean": 0.5689118600682349,
+        "n": 1,
+        "std": 0.0
+      },
+      "shield_correction_rate": {
+        "mean": 0.995,
+        "n": 1,
+        "std": 0.0
+      },
+      "train_mean_D_proj": {
+        "mean": 95.4296875,
+        "n": 1,
+        "std": 0.0
+      },
+      "train_violation_rate": {
+        "mean": 0.08984375,
+        "n": 1,
+        "std": 0.0
+      },
+      "urllc_violation_rate": {
+        "mean": 0.125,
+        "n": 1,
+        "std": 0.0
+      }
+    }
+  },
+  "kind": "phase3_m3_m5_summary",
+  "n_runs": 2,
+  "schema_version": "safe_oran_phase3_m3_m5"
+}

@@ -1,0 +1,56 @@
+{
+  "algo": "ppo",
+  "eval_metrics": {
+    "adaptation_delay": null,
+    "mean_D_proj": 96.6,
+    "mean_p_min": 81.6,
+    "p95_D_proj": 180.0,
+    "p95_p_min": 100.0,
+    "reward": 0.5591838955582739,
+    "shield_correction_rate": 0.955,
+    "urllc_violation_rate": 0.125
+  },
+  "eval_per_episode": [
+    {
+      "adaptation_delay": null,
+      "mean_D_proj": 96.6,
+      "mean_p_min": 81.6,
+      "p95_D_proj": 180.0,
+      "p95_p_min": 100.0,
+      "reward": 0.5591838955582739,
+      "shield_correction_rate": 0.955,
+      "urllc_violation_rate": 0.125
+    }
+  ],
+  "evidence": {
+    "checkpoint_bytes": 194772,
+    "checkpoint_exists": true,
+    "checkpoint_path": "/home/huangxiaolin/safe_drl_oran/02_models/phase3_m3_m5/ppo_M3_dynamic_no_aug_S4_sla_upgrade_s42.zip",
+    "n_eval_episodes": 1,
+    "seed": 42,
+    "total_timesteps_consumed": 512,
+    "total_timesteps_requested": 512,
+    "vecnorm_path": "/home/huangxiaolin/safe_drl_oran/02_models/phase3_m3_m5/ppo_M3_dynamic_no_aug_S4_sla_upgrade_s42_vecnorm.pkl",
+    "wall_seconds": 1.0
+  },
+  "kind": "phase3_m3_m5_run",
+  "method": "M3_dynamic_no_aug",
+  "paper_usable": false,
+  "quick": true,
+  "scenario": "S4_sla_upgrade",
+  "schema_version": "safe_oran_phase3_m3_m5",
+  "seed": 42,
+  "train_metrics": {
+    "history": [
+      [
+        500,
+        45,
+        500,
+        47820.0
+      ]
+    ],
+    "train_mean_D_proj": 95.5078125,
+    "train_shield_correction_rate": 0.912109375,
+    "train_violation_rate": 0.087890625
+  }
+}
