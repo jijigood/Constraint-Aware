@@ -1,0 +1,249 @@
+{
+  "schema_version": "safe_drl_v1",
+  "kind": "phase2a_gate_summary",
+  "paper_usable": true,
+  "evidence": {
+    "generation_calls": 1800,
+    "index_vectors": 710045,
+    "embedding_dim": 1024,
+    "embedding_model_id": "BGE-M3",
+    "llm_model_id": "qwen",
+    "endpoint": "http://127.0.0.1:8001/v1",
+    "n_states": 900,
+    "smoke": false,
+    "tag": "32b"
+  },
+  "sets": {
+    "cross": {
+      "n": 300,
+      "arms": {
+        "static": {
+          "urllc_violation_rate": {
+            "mean": 0.66,
+            "lo": 0.6066666666666667,
+            "hi": 0.7133333333333334
+          },
+          "reward": {
+            "mean": -0.25915965081697123,
+            "lo": -0.39323488374637555,
+            "hi": -0.12018623372776599
+          },
+          "mean_prb_urllc": 58.766666666666666
+        },
+        "oracle_margin": {
+          "urllc_violation_rate": {
+            "mean": 0.03333333333333333,
+            "lo": 0.013333333333333334,
+            "hi": 0.05333333333333334
+          },
+          "reward": {
+            "mean": 0.4166666666666667,
+            "lo": 0.36666666666666664,
+            "hi": 0.4666666666666667
+          },
+          "mean_prb_urllc": 100.0
+        },
+        "llm_no_rag": {
+          "urllc_violation_rate": {
+            "mean": 0.34,
+            "lo": 0.28991666666666666,
+            "hi": 0.39666666666666667
+          },
+          "reward": {
+            "mean": 0.15634737778888286,
+            "lo": 0.025876864281725066,
+            "hi": 0.2763623545599119
+          },
+          "mean_prb_urllc": 76.4,
+          "schema_validity": 1.0,
+          "citation_validity": 0.0,
+          "constraint_validity": 1.0,
+          "mean_reservation": 67.5
+        },
+        "rag_llm": {
+          "urllc_violation_rate": {
+            "mean": 0.30666666666666664,
+            "lo": 0.25666666666666665,
+            "hi": 0.36
+          },
+          "reward": {
+            "mean": 0.35009837721678033,
+            "lo": 0.21479163779387006,
+            "hi": 0.4805444866166012
+          },
+          "mean_prb_urllc": 71.93333333333334,
+          "schema_validity": 1.0,
+          "citation_validity": 1.0,
+          "constraint_validity": 1.0,
+          "mean_reservation": 67.23333333333333
+        }
+      },
+      "paired": {
+        "static_minus_rag_viol": {
+          "mean": 0.35333333333333333,
+          "lo": 0.3,
+          "hi": 0.4066666666666667
+        },
+        "norag_minus_rag_viol": {
+          "mean": 0.03333333333333333,
+          "lo": -0.02,
+          "hi": 0.09
+        }
+      }
+    },
+    "high_urllc": {
+      "n": 300,
+      "arms": {
+        "static": {
+          "urllc_violation_rate": {
+            "mean": 0.08333333333333333,
+            "lo": 0.05333333333333334,
+            "hi": 0.11333333333333333
+          },
+          "reward": {
+            "mean": 0.7976605478256712,
+            "lo": 0.7107102997633371,
+            "hi": 0.8784152372244237
+          },
+          "mean_prb_urllc": 77.53333333333333
+        },
+        "oracle_margin": {
+          "urllc_violation_rate": {
+            "mean": 0.03333333333333333,
+            "lo": 0.013333333333333334,
+            "hi": 0.05333333333333334
+          },
+          "reward": {
+            "mean": 0.6329605969946132,
+            "lo": 0.5671885268068888,
+            "hi": 0.691410154491433
+          },
+          "mean_prb_urllc": 90.6
+        },
+        "llm_no_rag": {
+          "urllc_violation_rate": {
+            "mean": 0.03666666666666667,
+            "lo": 0.016666666666666666,
+            "hi": 0.056749999999999544
+          },
+          "reward": {
+            "mean": 0.852911835940819,
+            "lo": 0.7797754256030752,
+            "hi": 0.920382394162681
+          },
+          "mean_prb_urllc": 80.66666666666667,
+          "schema_validity": 1.0,
+          "citation_validity": 0.0,
+          "constraint_validity": 1.0,
+          "mean_reservation": 68.3
+        },
+        "rag_llm": {
+          "urllc_violation_rate": {
+            "mean": 0.06666666666666667,
+            "lo": 0.04,
+            "hi": 0.09666666666666666
+          },
+          "reward": {
+            "mean": 0.8152252379158577,
+            "lo": 0.7333836727639458,
+            "hi": 0.8916206625041959
+          },
+          "mean_prb_urllc": 78.8,
+          "schema_validity": 1.0,
+          "citation_validity": 1.0,
+          "constraint_validity": 1.0,
+          "mean_reservation": 63.13333333333333
+        }
+      },
+      "paired": {
+        "static_minus_rag_viol": {
+          "mean": 0.016666666666666666,
+          "lo": 0.0033333333333333335,
+          "hi": 0.03333333333333333
+        },
+        "norag_minus_rag_viol": {
+          "mean": -0.03,
+          "lo": -0.05,
+          "hi": -0.013333333333333334
+        }
+      }
+    },
+    "high_embb": {
+      "n": 300,
+      "arms": {
+        "static": {
+          "urllc_violation_rate": {
+            "mean": 0.006666666666666667,
+            "lo": 0.0,
+            "hi": 0.016666666666666666
+          },
+          "reward": {
+            "mean": 1.5808914602299668,
+            "lo": 1.5483761028075231,
+            "hi": 1.6055302682122272
+          },
+          "mean_prb_urllc": 50.0
+        },
+        "oracle_margin": {
+          "urllc_violation_rate": {
+            "mean": 0.0,
+            "lo": 0.0,
+            "hi": 0.0
+          },
+          "reward": {
+            "mean": 1.6723104693725597,
+            "lo": 1.644075605895334,
+            "hi": 1.7016334300261557
+          },
+          "mean_prb_urllc": 46.63333333333333
+        },
+        "llm_no_rag": {
+          "urllc_violation_rate": {
+            "mean": 0.0,
+            "lo": 0.0,
+            "hi": 0.0
+          },
+          "reward": {
+            "mean": 1.7963477983941227,
+            "lo": 1.7651217011608054,
+            "hi": 1.8254679022449107
+          },
+          "mean_prb_urllc": 41.2,
+          "schema_validity": 1.0,
+          "citation_validity": 0.0,
+          "constraint_validity": 1.0,
+          "mean_reservation": 34.6
+        },
+        "rag_llm": {
+          "urllc_violation_rate": {
+            "mean": 0.006666666666666667,
+            "lo": 0.0,
+            "hi": 0.016666666666666666
+          },
+          "reward": {
+            "mean": 1.7826587266739693,
+            "lo": 1.7402221438979322,
+            "hi": 1.8173527891200139
+          },
+          "mean_prb_urllc": 41.03333333333333,
+          "schema_validity": 1.0,
+          "citation_validity": 1.0,
+          "constraint_validity": 1.0,
+          "mean_reservation": 33.06666666666667
+        }
+      },
+      "paired": {
+        "static_minus_rag_viol": {
+          "mean": 0.0,
+          "lo": 0.0,
+          "hi": 0.0
+        },
+        "norag_minus_rag_viol": {
+          "mean": -0.006666666666666667,
+          "lo": -0.016666666666666666,
+          "hi": 0.0
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "schema_version": "safe_drl_v1",
+  "kind": "phase2a_size_sweep",
+  "cross_static_ref": 0.66,
+  "cross_oracle_ref": 0.03333333333333333,
+  "models": [
+    {
+      "tag": "1p7b",
+      "size_b": 1.7,
+      "paper_usable": true,
+      "cross_viol_norag": 0.66,
+      "cross_viol_rag": 0.66,
+      "cross_reward_rag": -0.25915965081697123,
+      "cross_resv_rag": 58.766666666666666,
+      "schema_rag": 1.0,
+      "cite_rag": 1.0,
+      "PASS": false,
+      "rag_adds_value": false,
+      "verdict": "NO-GO: the LLM cannot match the oracle's load-aware safety o"
+    },
+    {
+      "tag": "4b",
+      "size_b": 4.0,
+      "paper_usable": true,
+      "cross_viol_norag": 0.42333333333333334,
+      "cross_viol_rag": 0.4633333333333333,
+      "cross_reward_rag": 0.0008846881695576769,
+      "cross_resv_rag": 70.0,
+      "schema_rag": 1.0,
+      "cite_rag": 1.0,
+      "PASS": false,
+      "rag_adds_value": false,
+      "verdict": "NO-GO: the LLM cannot match the oracle's load-aware safety o"
+    },
+    {
+      "tag": "14b",
+      "size_b": 14.0,
+      "paper_usable": true,
+      "cross_viol_norag": 0.36,
+      "cross_viol_rag": 0.36666666666666664,
+      "cross_reward_rag": 0.10729823094197262,
+      "cross_resv_rag": 75.66666666666667,
+      "schema_rag": 1.0,
+      "cite_rag": 1.0,
+      "PASS": false,
+      "rag_adds_value": false,
+      "verdict": "NO-GO: the LLM cannot match the oracle's load-aware safety o"
+    },
+    {
+      "tag": "32b",
+      "size_b": 32.0,
+      "paper_usable": true,
+      "cross_viol_norag": 0.34,
+      "cross_viol_rag": 0.30666666666666664,
+      "cross_reward_rag": 0.35009837721678033,
+      "cross_resv_rag": 71.93333333333334,
+      "schema_rag": 1.0,
+      "cite_rag": 1.0,
+      "PASS": false,
+      "rag_adds_value": false,
+      "verdict": "NO-GO: the LLM cannot match the oracle's load-aware safety o"
+    }
+  ]
+}

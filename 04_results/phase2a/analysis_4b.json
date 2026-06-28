@@ -1,0 +1,41 @@
+{
+  "schema_version": "safe_drl_v1",
+  "kind": "phase2a_analysis",
+  "tag": "4b",
+  "paper_usable": true,
+  "gate": {
+    "PASS": false,
+    "pass_safety": false,
+    "rag_adds_value": false,
+    "checks": {
+      "rag_reduces_viol_vs_static": false,
+      "reward_loss_vs_oracle_small": false,
+      "approaches_oracle_safety": false,
+      "rag_adds_value_over_norag": false
+    },
+    "quality": {
+      "llm_no_rag": {
+        "schema_validity": 0.9966666666666667,
+        "citation_validity": 0.0,
+        "constraint_validity": 0.9966666666666667,
+        "mean_reservation": 67.36666666666666
+      },
+      "rag_llm": {
+        "schema_validity": 1.0,
+        "citation_validity": 1.0,
+        "constraint_validity": 1.0,
+        "mean_reservation": 66.23333333333333
+      }
+    },
+    "verdict": "NO-GO: the LLM cannot match the oracle's load-aware safety offline. Honest negative; do not go closed-loop. Revisit prompt/state-summary or fall back to the oracle shield.",
+    "notes": [],
+    "cross_summary": {
+      "V_static": 0.66,
+      "V_norag": 0.42333333333333334,
+      "V_rag": 0.4633333333333333,
+      "V_oracle": 0.03333333333333333,
+      "R_rag": 0.0008846881695576769,
+      "R_oracle": 0.4166666666666667
+    }
+  }
+}

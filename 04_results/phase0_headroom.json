@@ -1,0 +1,177 @@
+{
+  "schema_version": "safe_drl_v0",
+  "paper_usable": false,
+  "kind": "offline_headroom_oracle",
+  "policy": "throughput_greedy",
+  "static_grid": [
+    0,
+    10,
+    20,
+    30,
+    40,
+    50,
+    60
+  ],
+  "regimes": {
+    "high_embb": {
+      "none": {
+        "reward": 0.11004772385106036,
+        "urllc_violation_rate": 1.0,
+        "embb_sla_rate": 1.0,
+        "mmtc_sla_rate": 0.43,
+        "fairness": 0.4655249681937261
+      },
+      "static": {
+        "0": {
+          "reward": 0.11004772385106036,
+          "urllc_violation_rate": 1.0,
+          "embb_sla_rate": 1.0,
+          "mmtc_sla_rate": 0.43,
+          "fairness": 0.4655249681937261
+        },
+        "10": {
+          "reward": 0.005066197871160396,
+          "urllc_violation_rate": 1.0,
+          "embb_sla_rate": 1.0,
+          "mmtc_sla_rate": 0.2916666666666667,
+          "fairness": 0.5020317840738264
+        },
+        "20": {
+          "reward": -0.053218713040167766,
+          "urllc_violation_rate": 0.9433333333333334,
+          "embb_sla_rate": 1.0,
+          "mmtc_sla_rate": 0.2683333333333333,
+          "fairness": 0.5875092806288308
+        },
+        "30": {
+          "reward": 0.8210318314071358,
+          "urllc_violation_rate": 0.505,
+          "embb_sla_rate": 1.0,
+          "mmtc_sla_rate": 0.26666666666666666,
+          "fairness": 0.6844873322021047
+        },
+        "40": {
+          "reward": 1.6565856233955296,
+          "urllc_violation_rate": 0.08166666666666667,
+          "embb_sla_rate": 0.9699999999999999,
+          "mmtc_sla_rate": 0.26666666666666666,
+          "fairness": 0.7541443370849895
+        },
+        "50": {
+          "reward": 1.63376193779919,
+          "urllc_violation_rate": 0.0016666666666666668,
+          "embb_sla_rate": 0.8333333333333334,
+          "mmtc_sla_rate": 0.26666666666666666,
+          "fairness": 0.7630589145620408
+        },
+        "60": {
+          "reward": 1.4151049188695175,
+          "urllc_violation_rate": 0.0,
+          "embb_sla_rate": 0.6483333333333334,
+          "mmtc_sla_rate": 0.26666666666666666,
+          "fairness": 0.7067027802698748
+        }
+      },
+      "oracle_min": {
+        "reward": 1.7615602184230796,
+        "urllc_violation_rate": 0.08166666666666667,
+        "embb_sla_rate": 0.9816666666666666,
+        "mmtc_sla_rate": 0.26666666666666666,
+        "fairness": 0.7295022097203617
+      },
+      "oracle_margin": {
+        "reward": 1.7176778363547793,
+        "urllc_violation_rate": 0.0,
+        "embb_sla_rate": 0.9533333333333333,
+        "mmtc_sla_rate": 0.26666666666666666,
+        "fairness": 0.7678906684155429
+      },
+      "safe_static_p": 50,
+      "min_static_violation": 0.0
+    },
+    "high_urllc": {
+      "none": {
+        "reward": -0.4155587011950515,
+        "urllc_violation_rate": 1.0,
+        "embb_sla_rate": 0.9666666666666667,
+        "mmtc_sla_rate": 0.9499999999999998,
+        "fairness": 0.666655333867307
+      },
+      "static": {
+        "0": {
+          "reward": -0.4155587011950515,
+          "urllc_violation_rate": 1.0,
+          "embb_sla_rate": 0.9666666666666667,
+          "mmtc_sla_rate": 0.9499999999999998,
+          "fairness": 0.666655333867307
+        },
+        "10": {
+          "reward": -0.4367269921085964,
+          "urllc_violation_rate": 1.0,
+          "embb_sla_rate": 0.9333333333333332,
+          "mmtc_sla_rate": 0.8966666666666666,
+          "fairness": 0.8031025533274855
+        },
+        "20": {
+          "reward": -0.481677456381407,
+          "urllc_violation_rate": 1.0,
+          "embb_sla_rate": 0.915,
+          "mmtc_sla_rate": 0.7933333333333334,
+          "fairness": 0.9119451179954142
+        },
+        "30": {
+          "reward": -0.5670075843889076,
+          "urllc_violation_rate": 1.0,
+          "embb_sla_rate": 0.9283333333333333,
+          "mmtc_sla_rate": 0.5766666666666667,
+          "fairness": 0.9371747755105116
+        },
+        "40": {
+          "reward": -0.6679477001908102,
+          "urllc_violation_rate": 0.9899999999999999,
+          "embb_sla_rate": 0.8966666666666666,
+          "mmtc_sla_rate": 0.36999999999999994,
+          "fairness": 0.8660135343647984
+        },
+        "50": {
+          "reward": -0.47075521439571605,
+          "urllc_violation_rate": 0.8416666666666667,
+          "embb_sla_rate": 0.8283333333333333,
+          "mmtc_sla_rate": 0.2733333333333334,
+          "fairness": 0.7729889475227322
+        },
+        "60": {
+          "reward": -0.17808227368730076,
+          "urllc_violation_rate": 0.6366666666666667,
+          "embb_sla_rate": 0.6416666666666666,
+          "mmtc_sla_rate": 0.27166666666666667,
+          "fairness": 0.7082021474617363
+        }
+      },
+      "oracle_min": {
+        "reward": 0.6934670478591553,
+        "urllc_violation_rate": 0.18833333333333332,
+        "embb_sla_rate": 0.315,
+        "mmtc_sla_rate": 0.25333333333333335,
+        "fairness": 0.5896222690149444
+      },
+      "oracle_margin": {
+        "reward": 0.6911972598805288,
+        "urllc_violation_rate": 0.018333333333333333,
+        "embb_sla_rate": 0.011666666666666667,
+        "mmtc_sla_rate": 0.18833333333333332,
+        "fairness": 0.40634524774156716
+      },
+      "safe_static_p": 60,
+      "min_static_violation": 0.6366666666666667
+    }
+  },
+  "gate": {
+    "none_violation_ge_15pct": true,
+    "best_static_differs_by_regime": true,
+    "cross_regime_fixed_reservation_suboptimal": true,
+    "oracle_on_or_beyond_static_frontier": true,
+    "margin_oracle_at_least_as_safe_as_best_static": true,
+    "PASS": true
+  }
+}

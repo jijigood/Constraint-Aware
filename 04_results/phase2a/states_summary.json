@@ -1,0 +1,20 @@
+{
+  "high_embb": {
+    "n": 300,
+    "hard_states_gt_floor": 2,
+    "urllc_demand_min": 10.2,
+    "urllc_demand_max": 29.2
+  },
+  "high_urllc": {
+    "n": 300,
+    "hard_states_gt_floor": 203,
+    "urllc_demand_min": 22.5,
+    "urllc_demand_max": 64.1
+  },
+  "cross": {
+    "n": 300,
+    "hard_states_gt_floor": 300,
+    "urllc_demand_min": 22.5,
+    "urllc_demand_max": 64.1
+  }
+}

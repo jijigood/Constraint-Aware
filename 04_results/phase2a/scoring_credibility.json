@@ -1,0 +1,104 @@
+{
+  "schema_version": "safe_drl_v1",
+  "kind": "scoring_credibility",
+  "paper_usable": false,
+  "reliability": 0.99,
+  "landscape": {
+    "cross": {
+      "zero": {
+        "viol": 0.66,
+        "reward": -0.25915965081697123
+      },
+      "oracle_minus10": {
+        "viol": 0.09333333333333334,
+        "reward": 0.4860220957642044
+      },
+      "oracle": {
+        "viol": 0.03333333333333333,
+        "reward": 0.4166666666666667
+      },
+      "oracle_plus30": {
+        "viol": 0.03333333333333333,
+        "reward": 0.4166666666666667
+      },
+      "static": {
+        "viol": 0.66,
+        "reward": -0.25915965081697123
+      }
+    },
+    "high_embb": {
+      "zero": {
+        "viol": 0.01,
+        "reward": 1.7749111667310309
+      },
+      "oracle_minus10": {
+        "viol": 0.01,
+        "reward": 1.768016687775439
+      },
+      "oracle": {
+        "viol": 0.0,
+        "reward": 1.6723104693725597
+      },
+      "oracle_plus30": {
+        "viol": 0.0,
+        "reward": 1.0191789429459732
+      },
+      "static": {
+        "viol": 0.006666666666666667,
+        "reward": 1.5808914602299668
+      }
+    },
+    "high_urllc": {
+      "zero": {
+        "viol": 0.08333333333333333,
+        "reward": 0.8615552942096114
+      },
+      "oracle_minus10": {
+        "viol": 0.08,
+        "reward": 0.6769286562183189
+      },
+      "oracle": {
+        "viol": 0.03333333333333333,
+        "reward": 0.6329605969946132
+      },
+      "oracle_plus30": {
+        "viol": 0.03333333333333333,
+        "reward": 0.4223832621560515
+      },
+      "static": {
+        "viol": 0.08333333333333333,
+        "reward": 0.7976605478256712
+      }
+    }
+  },
+  "broken_cross": {
+    "zero": {
+      "viol": 0.66,
+      "reward": -0.25915965081697123
+    },
+    "oracle_minus10": {
+      "viol": 0.66,
+      "reward": -0.25915965081697123
+    },
+    "oracle": {
+      "viol": 0.66,
+      "reward": -0.25915965081697123
+    },
+    "oracle_plus30": {
+      "viol": 0.66,
+      "reward": -0.25915965081697123
+    },
+    "static": {
+      "viol": 0.66,
+      "reward": -0.25915965081697123
+    }
+  },
+  "checks": {
+    "monotone_safety_cross": true,
+    "monotone_safety_high_urllc": true,
+    "over_reservation_costs_reward": true,
+    "cross_static_fails_vs_oracle": true,
+    "discriminating_control_has_teeth": true
+  },
+  "PASS": true
+}

@@ -1,0 +1,30 @@
+{
+  "schema_version": "safe_drl_v1",
+  "kind": "phase1_analysis",
+  "gate": {
+    "checks": {
+      "drl_beats_rule_based_reward_all_regimes": true,
+      "shield_value_in_key_regime": true,
+      "oracle_is_safety_upper_bound": true,
+      "drl_only_internalizes_safety_somewhere": false
+    },
+    "per_regime": {
+      "high_embb": {
+        "drl_beats_rule_based_reward": true,
+        "drl_only_less_safe_than_shield": true,
+        "drl_only_internalizes_safety": false,
+        "oracle_is_safety_upper_bound": true
+      },
+      "high_urllc": {
+        "drl_beats_rule_based_reward": true,
+        "drl_only_less_safe_than_shield": true,
+        "drl_only_internalizes_safety": false,
+        "oracle_is_safety_upper_bound": true
+      }
+    },
+    "PASS": true,
+    "key_regime": "high_urllc",
+    "verdict": "PASS -- DRL beats rule-based, shield reduces URLLC unsafety (converged and/or during exploration), oracle is the safety upper bound; proceed to Phase 2 (RAG-LLM shield).",
+    "notes": []
+  }
+}
