@@ -1,0 +1,23 @@
+{
+  "gate": {
+    "PASS": true,
+    "checks": {
+      "cross_direct_numeric_unsafe_pass_zero": true,
+      "cross_noisy_vrf_on_fallbacks": true,
+      "cross_oracle_z_matches_oracle_pmin": true,
+      "cross_template_vrf_matches_oracle_pmin": true,
+      "high_embb_direct_numeric_unsafe_pass_zero": true,
+      "high_embb_noisy_vrf_on_fallbacks": true,
+      "high_embb_oracle_z_matches_oracle_pmin": true,
+      "high_embb_template_vrf_matches_oracle_pmin": true,
+      "high_urllc_direct_numeric_unsafe_pass_zero": true,
+      "high_urllc_noisy_vrf_on_fallbacks": true,
+      "high_urllc_oracle_z_matches_oracle_pmin": true,
+      "high_urllc_template_vrf_matches_oracle_pmin": true
+    },
+    "verdict": "PASS: symbolic-z verifier/solver path is deterministic and direct numeric outputs are fail-closed."
+  },
+  "kind": "phase2b_v1_analysis",
+  "schema_version": "safe_oran_phase2b_v1",
+  "smoke": false
+}

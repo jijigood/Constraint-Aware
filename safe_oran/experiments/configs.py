@@ -12,12 +12,29 @@ BASELINE_CONFIGS = {
 }
 
 SCENARIOS = {
-    "S1_stable": {"legacy_regime": "balanced", "sla_schedule": {0: 0.99}},
-    "S2_urllc_burst": {"legacy_regime": "bursty", "sla_schedule": {0: 0.99}},
-    "S3_channel_decay": {"legacy_regime": "high_urllc", "sla_schedule": {0: 0.99}},
-    "S4_sla_upgrade": {"legacy_regime": "high_urllc", "sla_schedule": {0: 0.99, 100: 0.9999}},
-    "S5_combined": {"legacy_regime": "bursty", "sla_schedule": {0: 0.99, 150: 0.9999}},
-    "high_embb": {"legacy_regime": "high_embb", "sla_schedule": {0: 0.99}},
-    "high_urllc": {"legacy_regime": "high_urllc", "sla_schedule": {0: 0.99}},
+    "S1_stable": {"legacy_regime": "balanced", "sla_schedule": {0: 0.99}, "channel_profile": "default"},
+    "S2_urllc_burst": {"legacy_regime": "bursty", "sla_schedule": {0: 0.99}, "channel_profile": "default"},
+    "S3_channel_decay": {
+        "legacy_regime": "high_urllc",
+        "sla_schedule": {0: 0.99},
+        "channel_profile": "linear_decay",
+        "channel_start": 0.8,
+        "channel_end": 0.15,
+        "channel_start_t": 100,
+        "channel_end_t": 400,
+        "episode_len": 500,
+    },
+    "S4_sla_upgrade": {"legacy_regime": "high_urllc", "sla_schedule": {0: 0.99, 100: 0.9999}, "channel_profile": "default"},
+    "S5_combined": {
+        "legacy_regime": "bursty",
+        "sla_schedule": {0: 0.99, 150: 0.9999},
+        "channel_profile": "linear_decay",
+        "channel_start": 0.7,
+        "channel_end": 0.12,
+        "channel_start_t": 120,
+        "channel_end_t": 420,
+        "episode_len": 500,
+    },
+    "high_embb": {"legacy_regime": "high_embb", "sla_schedule": {0: 0.99}, "channel_profile": "default"},
+    "high_urllc": {"legacy_regime": "high_urllc", "sla_schedule": {0: 0.99}, "channel_profile": "default"},
 }
-

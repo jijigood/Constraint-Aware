@@ -13,7 +13,7 @@ from pathlib import Path
 
 from safe_oran.constraints import DeterministicSolver, Verifier, oracle_spec
 from safe_oran.constraints.z_source import ZCache
-from safe_oran.envs.factory import make_constraint_env
+from safe_oran.envs.factory import make_constraint_env, make_legacy_env
 from safe_oran.envs.legacy import EnvConfig, PROJECT_ROOT, SlicingGymEnv, ensure_legacy_paths
 from safe_oran.rl import ConstraintAwareWrapper
 
@@ -113,6 +113,43 @@ def check_factory() -> dict:
     return {"methods": 5, "scenario": "S4_sla_upgrade", "passed": True}
 
 
+def check_scenario_dynamics() -> dict:
+    env = make_legacy_env("S3_channel_decay", seed=202)
+    env.reset(seed=202)
+    channels = []
+    for _ in range(430):
+        _, _, _, truncated, info = env.step(0)
+        channels.append(float(info["channel"]))
+        if truncated:
+            raise AssertionError("S3 truncated before channel decay reached t=400")
+    if abs(channels[0] - 0.8) > 1e-9:
+        raise AssertionError(f"S3 channel start mismatch: {channels[0]}")
+    if abs(channels[100] - 0.8) > 1e-9:
+        raise AssertionError(f"S3 channel at start_t mismatch: {channels[100]}")
+    if abs(channels[400] - 0.15) > 1e-9:
+        raise AssertionError(f"S3 channel end mismatch: {channels[400]}")
+    if any(channels[i + 1] > channels[i] + 1e-9 for i in range(100, 400)):
+        raise AssertionError("S3 channel is not monotone non-increasing during decay")
+
+    env2 = make_constraint_env("M5_constraint_aware", "S5_combined", seed=303)
+    env2.reset(seed=303)
+    saw_sla_upgrade = False
+    saw_channel_end = False
+    for _ in range(430):
+        _, _, _, truncated, info = env2.step(0)
+        if int(info["t"]) >= 150 and abs(float(info["sla"]) - 0.9999) < 1e-9:
+            saw_sla_upgrade = True
+        if int(info["t"]) >= 420 and abs(float(info["channel"]) - 0.12) < 1e-9:
+            saw_channel_end = True
+        if truncated:
+            break
+    if not saw_sla_upgrade:
+        raise AssertionError("S5 SLA upgrade was not observed")
+    if not saw_channel_end:
+        raise AssertionError("S5 channel decay endpoint was not observed")
+    return {"S3_channel_decay": "linear_decay_ok", "S5_combined": "sla_and_decay_ok", "passed": True}
+
+
 def check_fail_closed() -> dict:
     verifier = Verifier()
     bad_spec = {
@@ -140,6 +177,7 @@ def main() -> int:
         "counterfactual_reproduction": check_counterfactual_reproduction(),
         "wrapper": check_wrapper(),
         "factory": check_factory(),
+        "scenario_dynamics": check_scenario_dynamics(),
         "fail_closed": check_fail_closed(),
     }
     print(json.dumps(report, indent=2, sort_keys=True))

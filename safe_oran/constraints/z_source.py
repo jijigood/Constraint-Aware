@@ -52,7 +52,9 @@ def default_oracle_entries() -> dict[str, dict[str, Any]]:
     scenarios = {
         "S1_stable": [(0.99, 0, "nominal")],
         "S2_urllc_burst": [(0.99, 0, "nominal"), (0.99, 100, "pessimistic_quantile")],
-        "S3_channel_decay": [(0.99, 0, "nominal"), (0.99, 100, "pessimistic_quantile")],
+        # S3 keeps the symbolic rule fixed; the deterministic solver's p_min
+        # should move because the state channel decays.
+        "S3_channel_decay": [(0.99, 0, "nominal")],
         "S4_sla_upgrade": [(0.99, 0, "nominal"), (0.9999, 100, "pessimistic_quantile")],
         "S5_combined": [(0.99, 0, "nominal"), (0.99, 100, "pessimistic_quantile"), (0.9999, 150, "pessimistic_quantile")],
         "balanced": [(0.99, 0, "pessimistic_quantile")],
@@ -66,4 +68,3 @@ def default_oracle_entries() -> dict[str, dict[str, Any]]:
             z["channel_margin_policy"] = margin
             entries[ZCache.make_key(scenario, sla, t_event)] = z
     return entries
-

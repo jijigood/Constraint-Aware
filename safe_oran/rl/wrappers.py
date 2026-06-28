@@ -172,6 +172,9 @@ class ConstraintAwareWrapper(gym.Wrapper):
             self.p_min = p_min_action
 
         info.update({
+            "t": t,
+            "scenario": self.scenario,
+            "state_channel": float(state_t["channel"]),
             "raw_idx": raw_idx,
             "safe_idx": int(safe_idx),
             "agent_action": raw_idx,
@@ -188,4 +191,3 @@ class ConstraintAwareWrapper(gym.Wrapper):
             "verifier_on": self.verifier_on,
         })
         return self._obs(obs_raw), float(reward), terminated, truncated, info
-
