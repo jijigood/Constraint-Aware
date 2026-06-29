@@ -57,6 +57,7 @@ def default_oracle_entries() -> dict[str, dict[str, Any]]:
         "S3_channel_decay": [(0.99, 0, "nominal")],
         "S4_sla_upgrade": [(0.99, 0, "nominal"), (0.9999, 100, "pessimistic_quantile")],
         "S5_combined": [(0.99, 0, "nominal"), (0.99, 100, "pessimistic_quantile"), (0.9999, 150, "pessimistic_quantile")],
+        "S6_moderate_decay": [(0.99, 0, "nominal"), (0.999, 250, "pessimistic_quantile")],
         "balanced": [(0.99, 0, "pessimistic_quantile")],
         "high_embb": [(0.99, 0, "pessimistic_quantile")],
         "high_urllc": [(0.99, 0, "pessimistic_quantile")],

@@ -35,6 +35,7 @@ class ScenarioGymEnv(SlicingGymEnv):
     ):
         self.scenario_cfg = dict(scenario_cfg or {})
         super().__init__(cfg=cfg, regime=regime, shield_fn=shield_fn, seed=seed)
+        self._install_demand_profile()
         self._install_channel_profile()
 
     def _channel_profile_value(self, t: int) -> float | None:
@@ -58,11 +59,29 @@ class ScenarioGymEnv(SlicingGymEnv):
         self.inner.channel = channel_override
         self.inner._last_channel = float(self._channel_profile_value(self.inner.t))
 
+    def _install_demand_profile(self) -> None:
+        if self.scenario_cfg.get("demand_profile", "default") != "mild_urllc_burst":
+            return
+        if not hasattr(self.inner, "_scenario_base_sample_demand"):
+            self.inner._scenario_base_sample_demand = self.inner._sample_demand
+        base_sample = self.inner._scenario_base_sample_demand
+
+        def demand_override() -> dict:
+            d = dict(base_sample())
+            t = int(self.inner.t)
+            start_t = int(self.scenario_cfg.get("urllc_burst_start_t", 0))
+            end_t = int(self.scenario_cfg.get("urllc_burst_end_t", start_t))
+            if start_t <= t <= end_t:
+                d["urllc"] *= float(self.scenario_cfg.get("urllc_burst_scale", 1.0))
+            return d
+
+        self.inner._sample_demand = demand_override
+
     def reset(self, *, seed: int | None = None, options=None):
+        self._install_demand_profile()
         if self.scenario_cfg.get("channel_profile", "default") == "linear_decay":
             # Keep reset's first observation aligned with the scenario channel.
             self.inner._last_channel = float(self._channel_profile_value(0))
         obs, info = super().reset(seed=seed, options=options)
         self._install_channel_profile()
         return obs, info
-

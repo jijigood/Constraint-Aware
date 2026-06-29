@@ -13,7 +13,7 @@ from safe_oran.envs.legacy import PROJECT_ROOT
 from safe_oran.experiments.configs import SCENARIOS
 
 METHODS = ("M3_dynamic_no_aug", "M5_constraint_aware")
-SCENARIOS_PHASE3 = ("S3_channel_decay", "S4_sla_upgrade", "S5_combined")
+SCENARIOS_PHASE3 = ("S3_channel_decay", "S4_sla_upgrade", "S5_combined", "S6_moderate_decay")
 OUT_DIR = PROJECT_ROOT / "04_results" / "phase3_m3_m5"
 RUNS_DIR = OUT_DIR / "runs"
 MODEL_DIR = PROJECT_ROOT / "02_models" / "phase3_m3_m5"
@@ -106,4 +106,3 @@ def evaluate_model(model, norm_fn, method: str, scenario: str, *, n_episodes: in
 def write_json(path: Path, obj: dict[str, Any]) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(json.dumps(obj, indent=2, sort_keys=True))
-

@@ -162,6 +162,60 @@
         "std": 0.01560854466843935
       }
     },
+    "M3_dynamic_no_aug|S6_moderate_decay": {
+      "adaptation_delay": {
+        "mean": 0.26666666666666666,
+        "n": 3,
+        "std": 0.3771236166328254
+      },
+      "all_paper_usable": true,
+      "mean_D_proj": {
+        "mean": 30.368,
+        "n": 3,
+        "std": 3.074464289378992
+      },
+      "mean_p_min": {
+        "mean": 53.678666666666665,
+        "n": 3,
+        "std": 0.3808948527991535
+      },
+      "n_runs": 3,
+      "p95_D_proj": {
+        "mean": 122.73333333333328,
+        "n": 3,
+        "std": 6.89025076144217
+      },
+      "p95_p_min": {
+        "mean": 80.0,
+        "n": 3,
+        "std": 0.0
+      },
+      "reward": {
+        "mean": 0.7731688348403803,
+        "n": 3,
+        "std": 0.04957501684622713
+      },
+      "shield_correction_rate": {
+        "mean": 0.4288,
+        "n": 3,
+        "std": 0.020531601658581537
+      },
+      "train_mean_D_proj": {
+        "mean": 50.089301585608645,
+        "n": 3,
+        "std": 5.631010367223465
+      },
+      "train_violation_rate": {
+        "mean": 0.16933415991183165,
+        "n": 3,
+        "std": 0.027293522501331064
+      },
+      "urllc_violation_rate": {
+        "mean": 0.05186666666666667,
+        "n": 3,
+        "std": 0.025362088943057425
+      }
+    },
     "M5_constraint_aware|S3_channel_decay": {
       "adaptation_delay": {
         "mean": null,
@@ -323,9 +377,63 @@
         "n": 3,
         "std": 0.009268345171724155
       }
+    },
+    "M5_constraint_aware|S6_moderate_decay": {
+      "adaptation_delay": {
+        "mean": 1.4000000000000001,
+        "n": 3,
+        "std": 1.9798989873223332
+      },
+      "all_paper_usable": true,
+      "mean_D_proj": {
+        "mean": 23.304000000000002,
+        "n": 3,
+        "std": 6.943265706183701
+      },
+      "mean_p_min": {
+        "mean": 53.83466666666667,
+        "n": 3,
+        "std": 0.16027753706894904
+      },
+      "n_runs": 3,
+      "p95_D_proj": {
+        "mean": 104.0,
+        "n": 3,
+        "std": 17.281975195754296
+      },
+      "p95_p_min": {
+        "mean": 80.0,
+        "n": 3,
+        "std": 0.0
+      },
+      "reward": {
+        "mean": 0.7338849993924943,
+        "n": 3,
+        "std": 0.01074868105857194
+      },
+      "shield_correction_rate": {
+        "mean": 0.34613333333333335,
+        "n": 3,
+        "std": 0.08467307062395275
+      },
+      "train_mean_D_proj": {
+        "mean": 47.6414737983504,
+        "n": 3,
+        "std": 1.4473392387888564
+      },
+      "train_violation_rate": {
+        "mean": 0.16951191872866897,
+        "n": 3,
+        "std": 0.010297195989585499
+      },
+      "urllc_violation_rate": {
+        "mean": 0.06760000000000001,
+        "n": 3,
+        "std": 0.002847220867208352
+      }
     }
   },
   "kind": "phase3_m3_m5_summary",
-  "n_runs": 18,
+  "n_runs": 24,
   "schema_version": "safe_oran_phase3_m3_m5"
 }
