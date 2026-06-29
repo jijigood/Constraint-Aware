@@ -28,7 +28,12 @@ def ensure_legacy_paths(*, include_drl: bool = False, include_rag: bool = False)
 ensure_legacy_paths()
 
 from slicing_env import EnvConfig, SLICES, SlicingEnv  # noqa: E402
-from slicing_gym_env import SlicingGymEnv  # noqa: E402
+
+try:  # gymnasium is only needed for DRL training (runs in .venv); the pure-numpy
+    from slicing_gym_env import SlicingGymEnv  # noqa: E402
+    # constraint/solver/RAG path must stay importable in gym-less envs (e.g. dify_vllm_uv310).
+except ModuleNotFoundError:  # pragma: no cover - depends on the active venv
+    SlicingGymEnv = None
 
 __all__ = [
     "PROJECT_ROOT",

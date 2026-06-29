@@ -11,3 +11,6 @@ logs/
 *.tmp
 *.bak
 
+
+# derived BGE embedding cache (regenerable from the corpus)
+04_results/**/bge_cache/
