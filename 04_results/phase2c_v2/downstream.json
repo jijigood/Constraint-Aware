@@ -1,0 +1,277 @@
+{
+  "arms": {
+    "field_cer": {
+      "all": {
+        "mean_d_proj": 32.82222222222222,
+        "mean_over_reservation_prb": 2.5744444444444445,
+        "mean_under_reservation_prb": 0.0,
+        "n": 900,
+        "reward": 1.0137121329281888,
+        "shield_correction_rate": 0.4,
+        "under_reservation_rate": 0.0,
+        "unsafe_pass_rate": 0.022222222222222223,
+        "urllc_violation_rate": 0.022222222222222223
+      },
+      "by_set": {
+        "cross": {
+          "mean_d_proj": 82.46666666666667,
+          "mean_over_reservation_prb": 0.006666666666666667,
+          "mean_under_reservation_prb": 0.0,
+          "n": 300,
+          "reward": 0.4166666666666667,
+          "shield_correction_rate": 1.0,
+          "under_reservation_rate": 0.0,
+          "unsafe_pass_rate": 0.03333333333333333,
+          "urllc_violation_rate": 0.03333333333333333
+        },
+        "high_embb": {
+          "mean_d_proj": 0.2,
+          "mean_over_reservation_prb": 4.553333333333334,
+          "mean_under_reservation_prb": 0.0,
+          "n": 300,
+          "reward": 1.798110220556223,
+          "shield_correction_rate": 0.01,
+          "under_reservation_rate": 0.0,
+          "unsafe_pass_rate": 0.0,
+          "urllc_violation_rate": 0.0
+        },
+        "high_urllc": {
+          "mean_d_proj": 15.8,
+          "mean_over_reservation_prb": 3.1633333333333336,
+          "mean_under_reservation_prb": 0.0,
+          "n": 300,
+          "reward": 0.8263595115616772,
+          "shield_correction_rate": 0.19,
+          "under_reservation_rate": 0.0,
+          "unsafe_pass_rate": 0.03333333333333333,
+          "urllc_violation_rate": 0.03333333333333333
+        }
+      },
+      "hard": {
+        "mean_d_proj": 49.13333333333333,
+        "mean_over_reservation_prb": 1.585,
+        "mean_under_reservation_prb": 0.0,
+        "n": 600,
+        "reward": 0.6215130891141719,
+        "shield_correction_rate": 0.595,
+        "under_reservation_rate": 0.0,
+        "unsafe_pass_rate": 0.03333333333333333,
+        "urllc_violation_rate": 0.03333333333333333
+      }
+    },
+    "oracle": {
+      "all": {
+        "mean_d_proj": 32.82222222222222,
+        "mean_over_reservation_prb": 0.0,
+        "mean_under_reservation_prb": 0.0,
+        "n": 900,
+        "reward": 1.0137121329281888,
+        "shield_correction_rate": 0.4,
+        "under_reservation_rate": 0.0,
+        "unsafe_pass_rate": 0.022222222222222223,
+        "urllc_violation_rate": 0.022222222222222223
+      },
+      "by_set": {
+        "cross": {
+          "mean_d_proj": 82.46666666666667,
+          "mean_over_reservation_prb": 0.0,
+          "mean_under_reservation_prb": 0.0,
+          "n": 300,
+          "reward": 0.4166666666666667,
+          "shield_correction_rate": 1.0,
+          "under_reservation_rate": 0.0,
+          "unsafe_pass_rate": 0.03333333333333333,
+          "urllc_violation_rate": 0.03333333333333333
+        },
+        "high_embb": {
+          "mean_d_proj": 0.2,
+          "mean_over_reservation_prb": 0.0,
+          "mean_under_reservation_prb": 0.0,
+          "n": 300,
+          "reward": 1.798110220556223,
+          "shield_correction_rate": 0.01,
+          "under_reservation_rate": 0.0,
+          "unsafe_pass_rate": 0.0,
+          "urllc_violation_rate": 0.0
+        },
+        "high_urllc": {
+          "mean_d_proj": 15.8,
+          "mean_over_reservation_prb": 0.0,
+          "mean_under_reservation_prb": 0.0,
+          "n": 300,
+          "reward": 0.8263595115616772,
+          "shield_correction_rate": 0.19,
+          "under_reservation_rate": 0.0,
+          "unsafe_pass_rate": 0.03333333333333333,
+          "urllc_violation_rate": 0.03333333333333333
+        }
+      },
+      "hard": {
+        "mean_d_proj": 49.13333333333333,
+        "mean_over_reservation_prb": 0.0,
+        "mean_under_reservation_prb": 0.0,
+        "n": 600,
+        "reward": 0.6215130891141719,
+        "shield_correction_rate": 0.595,
+        "under_reservation_rate": 0.0,
+        "unsafe_pass_rate": 0.03333333333333333,
+        "urllc_violation_rate": 0.03333333333333333
+      }
+    },
+    "ordinary_rag": {
+      "all": {
+        "mean_d_proj": 32.82222222222222,
+        "mean_over_reservation_prb": 2.5744444444444445,
+        "mean_under_reservation_prb": 0.0,
+        "n": 900,
+        "reward": 1.0137121329281888,
+        "shield_correction_rate": 0.4,
+        "under_reservation_rate": 0.0,
+        "unsafe_pass_rate": 0.022222222222222223,
+        "urllc_violation_rate": 0.022222222222222223
+      },
+      "by_set": {
+        "cross": {
+          "mean_d_proj": 82.46666666666667,
+          "mean_over_reservation_prb": 0.006666666666666667,
+          "mean_under_reservation_prb": 0.0,
+          "n": 300,
+          "reward": 0.4166666666666667,
+          "shield_correction_rate": 1.0,
+          "under_reservation_rate": 0.0,
+          "unsafe_pass_rate": 0.03333333333333333,
+          "urllc_violation_rate": 0.03333333333333333
+        },
+        "high_embb": {
+          "mean_d_proj": 0.2,
+          "mean_over_reservation_prb": 4.553333333333334,
+          "mean_under_reservation_prb": 0.0,
+          "n": 300,
+          "reward": 1.798110220556223,
+          "shield_correction_rate": 0.01,
+          "under_reservation_rate": 0.0,
+          "unsafe_pass_rate": 0.0,
+          "urllc_violation_rate": 0.0
+        },
+        "high_urllc": {
+          "mean_d_proj": 15.8,
+          "mean_over_reservation_prb": 3.1633333333333336,
+          "mean_under_reservation_prb": 0.0,
+          "n": 300,
+          "reward": 0.8263595115616772,
+          "shield_correction_rate": 0.19,
+          "under_reservation_rate": 0.0,
+          "unsafe_pass_rate": 0.03333333333333333,
+          "urllc_violation_rate": 0.03333333333333333
+        }
+      },
+      "hard": {
+        "mean_d_proj": 49.13333333333333,
+        "mean_over_reservation_prb": 1.585,
+        "mean_under_reservation_prb": 0.0,
+        "n": 600,
+        "reward": 0.6215130891141719,
+        "shield_correction_rate": 0.595,
+        "under_reservation_rate": 0.0,
+        "unsafe_pass_rate": 0.03333333333333333,
+        "urllc_violation_rate": 0.03333333333333333
+      }
+    },
+    "static": {
+      "all": {
+        "mean_d_proj": 8.133333333333333,
+        "mean_over_reservation_prb": 7.102222222222222,
+        "mean_under_reservation_prb": 22.294444444444444,
+        "n": 900,
+        "reward": 0.7064641190795556,
+        "shield_correction_rate": 0.25,
+        "under_reservation_rate": 0.5611111111111111,
+        "unsafe_pass_rate": 0.25,
+        "urllc_violation_rate": 0.25
+      },
+      "by_set": {
+        "cross": {
+          "mean_d_proj": 0.0,
+          "mean_over_reservation_prb": 0.0,
+          "mean_under_reservation_prb": 49.99333333333333,
+          "n": 300,
+          "reward": -0.25915965081697123,
+          "shield_correction_rate": 0.0,
+          "under_reservation_rate": 1.0,
+          "unsafe_pass_rate": 0.66,
+          "urllc_violation_rate": 0.66
+        },
+        "high_embb": {
+          "mean_d_proj": 18.0,
+          "mean_over_reservation_prb": 18.596666666666668,
+          "mean_under_reservation_prb": 0.01,
+          "n": 300,
+          "reward": 1.5808914602299668,
+          "shield_correction_rate": 0.6966666666666667,
+          "under_reservation_rate": 0.006666666666666667,
+          "unsafe_pass_rate": 0.006666666666666667,
+          "urllc_violation_rate": 0.006666666666666667
+        },
+        "high_urllc": {
+          "mean_d_proj": 6.4,
+          "mean_over_reservation_prb": 2.71,
+          "mean_under_reservation_prb": 16.88,
+          "n": 300,
+          "reward": 0.7976605478256712,
+          "shield_correction_rate": 0.05333333333333334,
+          "under_reservation_rate": 0.6766666666666666,
+          "unsafe_pass_rate": 0.08333333333333333,
+          "urllc_violation_rate": 0.08333333333333333
+        }
+      },
+      "hard": {
+        "mean_d_proj": 3.2,
+        "mean_over_reservation_prb": 1.355,
+        "mean_under_reservation_prb": 33.43666666666667,
+        "n": 600,
+        "reward": 0.2692504485043499,
+        "shield_correction_rate": 0.02666666666666667,
+        "under_reservation_rate": 0.8383333333333334,
+        "unsafe_pass_rate": 0.37166666666666665,
+        "urllc_violation_rate": 0.37166666666666665
+      }
+    }
+  },
+  "claim_scope": "one-step counterfactual control replay over 900 saved Phase2a states; real env, deterministic, no DRL retrain",
+  "gate": {
+    "PASS": true,
+    "checks": {
+      "cer_matches_oracle_efficiency": true,
+      "cer_safe_by_construction": true,
+      "oracle_is_safe": true,
+      "static_is_unsafe": true
+    }
+  },
+  "kind": "phase2c_v2_downstream_control_replay",
+  "n_states": 900,
+  "paper_usable": true,
+  "parity_self_test": {
+    "passed": true,
+    "per_set": {
+      "cross": {
+        "max_reward_diff": 0.0,
+        "mismatches": 0,
+        "n": 300,
+        "passed": true
+      },
+      "high_embb": {
+        "max_reward_diff": 0.0,
+        "mismatches": 0,
+        "n": 300,
+        "passed": true
+      },
+      "high_urllc": {
+        "max_reward_diff": 0.0,
+        "mismatches": 0,
+        "n": 300,
+        "passed": true
+      }
+    }
+  },
+  "schema_version": "safe_oran_phase2c_v2_downstream"
+}

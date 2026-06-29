@@ -1,0 +1,6 @@
+arm,n,evidence_recall_at5,field_accuracy_mean,channel_margin_policy_accuracy,reliability_target_accuracy,spec_validity,fallback,mean_abs_delta_p_min,under_reservation_rate,mean_under_reservation_prb,over_reservation_rate,mean_over_reservation_prb
+no_retrieval,160,0.0,0.7124999999999999,0.15,0.7,1.0,0.0,12.375,0.44375,12.125,0.025,0.25
+ordinary_rag_intent_only,160,0.18125,0.575,0.15,0.15,1.0,0.0,12.375,0.44375,12.125,0.025,0.25
+state_aware_rag,160,0.5166666666666667,0.85625,0.575,0.85,1.0,0.0,4.9375,0.16875,4.6875,0.025,0.25
+field_aware_cer,160,0.7083333333333334,0.9375,0.875,0.875,1.0,0.0,7.8125,0.0,0.0,0.125,7.8125
+cer_verifier_solver,160,0.7083333333333334,0.9375,0.875,0.875,1.0,0.0,7.8125,0.0,0.0,0.125,7.8125
