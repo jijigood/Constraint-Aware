@@ -1,0 +1,113 @@
+{
+  "arms": {
+    "cer_verifier_solver": {
+      "arm": "cer_verifier_solver",
+      "channel_margin_policy_accuracy": 1.0,
+      "evidence_recall_at5": 0.9,
+      "fallback": 0.0,
+      "field_accuracy_mean": 1.0,
+      "formula_accuracy": 1.0,
+      "mean_abs_delta_p_min": 0.0,
+      "mean_delta_p_min": 0.0,
+      "mean_over_reservation_prb": 0.0,
+      "mean_under_reservation_prb": 0.0,
+      "n": 5,
+      "reliability_target_accuracy": 1.0,
+      "service_rule_accuracy": 1.0,
+      "spec_validity": 1.0,
+      "under_reservation_rate": 0.0
+    },
+    "field_aware_cer": {
+      "arm": "field_aware_cer",
+      "channel_margin_policy_accuracy": 1.0,
+      "evidence_recall_at5": 0.9,
+      "fallback": 0.0,
+      "field_accuracy_mean": 1.0,
+      "formula_accuracy": 1.0,
+      "mean_abs_delta_p_min": 0.0,
+      "mean_delta_p_min": 0.0,
+      "mean_over_reservation_prb": 0.0,
+      "mean_under_reservation_prb": 0.0,
+      "n": 5,
+      "reliability_target_accuracy": 1.0,
+      "service_rule_accuracy": 1.0,
+      "spec_validity": 1.0,
+      "under_reservation_rate": 0.0
+    },
+    "no_retrieval": {
+      "arm": "no_retrieval",
+      "channel_margin_policy_accuracy": 0.2,
+      "evidence_recall_at5": 0.0,
+      "fallback": 0.0,
+      "field_accuracy_mean": 0.7,
+      "formula_accuracy": 1.0,
+      "mean_abs_delta_p_min": 6.0,
+      "mean_delta_p_min": 6.0,
+      "mean_over_reservation_prb": 6.0,
+      "mean_under_reservation_prb": 0.0,
+      "n": 5,
+      "reliability_target_accuracy": 0.6,
+      "service_rule_accuracy": 1.0,
+      "spec_validity": 1.0,
+      "under_reservation_rate": 0.0
+    },
+    "ordinary_rag_intent_only": {
+      "arm": "ordinary_rag_intent_only",
+      "channel_margin_policy_accuracy": 0.8,
+      "evidence_recall_at5": 0.65,
+      "fallback": 0.0,
+      "field_accuracy_mean": 0.8500000000000001,
+      "formula_accuracy": 1.0,
+      "mean_abs_delta_p_min": 14.0,
+      "mean_delta_p_min": 14.0,
+      "mean_over_reservation_prb": 14.0,
+      "mean_under_reservation_prb": 0.0,
+      "n": 5,
+      "reliability_target_accuracy": 0.6,
+      "service_rule_accuracy": 1.0,
+      "spec_validity": 1.0,
+      "under_reservation_rate": 0.0
+    },
+    "state_aware_rag": {
+      "arm": "state_aware_rag",
+      "channel_margin_policy_accuracy": 1.0,
+      "evidence_recall_at5": 0.8,
+      "fallback": 0.0,
+      "field_accuracy_mean": 0.95,
+      "formula_accuracy": 1.0,
+      "mean_abs_delta_p_min": 0.0,
+      "mean_delta_p_min": 0.0,
+      "mean_over_reservation_prb": 0.0,
+      "mean_under_reservation_prb": 0.0,
+      "n": 5,
+      "reliability_target_accuracy": 0.8,
+      "service_rule_accuracy": 1.0,
+      "spec_validity": 1.0,
+      "under_reservation_rate": 0.0
+    }
+  },
+  "categories": [
+    "burst",
+    "conflict",
+    "degraded",
+    "normal",
+    "upgrade"
+  ],
+  "claim_scope": "deterministic field-level retrieval/routing benchmark; no real LLM generation",
+  "figures": [],
+  "gate": {
+    "PASS": true,
+    "checks": {
+      "cer_verifier_solver_safe": true,
+      "cer_verifier_solver_valid": true,
+      "field_aware_delta_beats_ordinary": true,
+      "field_aware_field_accuracy_beats_ordinary": true,
+      "field_aware_recall_beats_ordinary": true
+    }
+  },
+  "kind": "phase2c_mini_cer_field_eval",
+  "n_samples": 5,
+  "paper_usable": false,
+  "schema_version": "safe_oran_phase2c_mini_cer",
+  "smoke": true
+}
