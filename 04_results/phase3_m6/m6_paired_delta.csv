@@ -1,0 +1,12 @@
+scenario,metric,seed42_delta,seed43_delta,seed44_delta,mean_delta,std_delta,n_valid,improvement_direction
+S6_moderate_decay,reward,0.0,0.0,0.0,0.0,0.0,3,positive
+S6_moderate_decay,urllc_violation_rate,0.0,0.0,0.0,0.0,0.0,3,negative
+S6_moderate_decay,mean_D_proj,0.0,0.0,0.0,0.0,0.0,3,negative
+S6_moderate_decay,shield_correction_rate,0.0,0.0,0.0,0.0,0.0,3,negative
+S6_moderate_decay,adaptation_delay,0.0,0.0,0.0,0.0,0.0,3,negative
+S6_moderate_decay,fallback_rate,0.0,0.0,0.0,0.0,0.0,3,negative
+S6_moderate_decay,unsafe_under_reservation_rate,0.0,0.0,0.0,0.0,0.0,3,negative
+S6_moderate_decay,p_min_parity_rate,0.0,0.0,0.0,0.0,0.0,3,positive
+S6_moderate_decay,mean_abs_delta_p_min_vs_oracle,0.0,0.0,0.0,0.0,0.0,3,negative
+S6_moderate_decay,mean_under_reservation_prb,0.0,0.0,0.0,0.0,0.0,3,negative
+S6_moderate_decay,mean_over_reservation_prb,0.0,0.0,0.0,0.0,0.0,3,negative

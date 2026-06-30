@@ -58,6 +58,19 @@ Paired deltas are computed as `M5 - M3`:
 - S5 `Delta adaptation delay`: -70.0000 ± 0.0000.
 - S3 is the boundary case: the constraint saturates near the resource ceiling, so M5 has little room to improve and should be reported as a near-infeasible regime.
 
+
+### Phase3-M6: closed-loop CER-z completed
+
+Gate: `passed`.
+
+| Method | Reward | Violation | Mean D_proj | Shield correction | Fallback | Unsafe under-rsv | p_min parity |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| M5_constraint_aware | 0.7339 ± 0.0107 | 0.0676 ± 0.0028 | 23.3040 ± 6.9433 | 0.3461 ± 0.0847 | 0.0000 ± 0.0000 | 0.0000 ± 0.0000 | 1.0000 ± 0.0000 |
+| M6_field_CER_z | 0.7339 ± 0.0107 | 0.0676 ± 0.0028 | 23.3040 ± 6.9433 | 0.3461 ± 0.0847 | 0.0000 ± 0.0000 | 0.0000 ± 0.0000 | 1.0000 ± 0.0000 |
+
+This closes the final system loop: the S6 controller replaces Oracle-z with cached real-LLM field-CER-z while keeping the same verified solver/shield/DRL path.
+
+
 ## Paper Wording
 
 Use this claim:

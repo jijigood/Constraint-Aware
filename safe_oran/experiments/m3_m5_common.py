@@ -8,28 +8,35 @@ from typing import Any
 
 import numpy as np
 
+from safe_oran.constraints.z_source import ZCache
 from safe_oran.envs.factory import make_constraint_env
 from safe_oran.envs.legacy import PROJECT_ROOT
 from safe_oran.experiments.configs import SCENARIOS
 
 METHODS = ("M3_dynamic_no_aug", "M5_constraint_aware")
+M6_METHOD = "M6_field_CER_z"
+TRAIN_METHODS = METHODS + (M6_METHOD,)
 SCENARIOS_PHASE3 = ("S3_channel_decay", "S4_sla_upgrade", "S5_combined", "S6_moderate_decay")
 OUT_DIR = PROJECT_ROOT / "04_results" / "phase3_m3_m5"
 RUNS_DIR = OUT_DIR / "runs"
 MODEL_DIR = PROJECT_ROOT / "02_models" / "phase3_m3_m5"
 
 
-def make_env_fn(method: str, scenario: str, seed: int):
+def _z_cache_from_path(z_cache_path: str | None) -> ZCache | None:
+    return ZCache(cache_path=z_cache_path) if z_cache_path else None
+
+
+def make_env_fn(method: str, scenario: str, seed: int, z_cache_path: str | None = None):
     def _init():
-        return make_constraint_env(method, scenario, seed=seed)
+        return make_constraint_env(method, scenario, seed=seed, z_cache=_z_cache_from_path(z_cache_path))
 
     return _init
 
 
-def norm_from_vecnormalize(vecnorm_path: str, method: str, scenario: str):
+def norm_from_vecnormalize(vecnorm_path: str, method: str, scenario: str, z_cache_path: str | None = None):
     from stable_baselines3.common.vec_env import DummyVecEnv, VecNormalize
 
-    dummy = DummyVecEnv([make_env_fn(method, scenario, 0)])
+    dummy = DummyVecEnv([make_env_fn(method, scenario, 0, z_cache_path)])
     vn = VecNormalize.load(vecnorm_path, dummy)
     mean = vn.obs_rms.mean.astype(np.float64)
     var = vn.obs_rms.var.astype(np.float64)
@@ -51,6 +58,9 @@ def aggregate_infos(infos: list[dict[str, Any]], scenario: str) -> dict[str, Any
     rewards = np.asarray([i.get("reward", 0.0) for i in infos], dtype=float)
     violation = np.asarray([int(bool(i.get("urllc_violation", False))) for i in infos], dtype=float)
     corrected = np.asarray([int(bool(i.get("shield_corrected", False))) for i in infos], dtype=float)
+    fallback = np.asarray([int(bool(i.get("z_fallback", False))) for i in infos], dtype=float)
+    unsafe_under = np.asarray([int(bool(i.get("unsafe_under_reservation", False))) for i in infos], dtype=float)
+    deltas = np.asarray([float(i.get("delta_p_min_vs_oracle", 0.0)) for i in infos], dtype=float)
     return {
         "reward": float(rewards.mean()),
         "urllc_violation_rate": float(violation.mean()),
@@ -60,6 +70,12 @@ def aggregate_infos(infos: list[dict[str, Any]], scenario: str) -> dict[str, Any
         "mean_p_min": float(p_min.mean()),
         "p95_p_min": float(np.percentile(p_min, 95)),
         "adaptation_delay": adaptation_delay(infos, scenario),
+        "fallback_rate": float(fallback.mean()),
+        "unsafe_under_reservation_rate": float(unsafe_under.mean()),
+        "p_min_parity_rate": float(np.mean(deltas == 0.0)),
+        "mean_abs_delta_p_min_vs_oracle": float(np.mean(np.abs(deltas))),
+        "mean_under_reservation_prb": float(np.mean(np.maximum(0.0, -deltas))),
+        "mean_over_reservation_prb": float(np.mean(np.maximum(0.0, deltas))),
     }
 
 
@@ -81,10 +97,24 @@ def adaptation_delay(infos: list[dict[str, Any]], scenario: str, stable_window: 
     return None
 
 
-def evaluate_model(model, norm_fn, method: str, scenario: str, *, n_episodes: int = 5, seed0: int = 100_000):
+def evaluate_model(
+    model,
+    norm_fn,
+    method: str,
+    scenario: str,
+    *,
+    n_episodes: int = 5,
+    seed0: int = 100_000,
+    z_cache_path: str | None = None,
+):
     per_episode = []
     for ep in range(n_episodes):
-        env = make_constraint_env(method, scenario, seed=seed0 + ep)
+        env = make_constraint_env(
+            method,
+            scenario,
+            seed=seed0 + ep,
+            z_cache=_z_cache_from_path(z_cache_path),
+        )
         obs, _ = env.reset(seed=seed0 + ep)
         infos = []
         terminated = truncated = False

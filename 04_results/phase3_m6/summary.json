@@ -1,0 +1,55 @@
+{
+  "figures": [
+    "/home/huangxiaolin/safe_drl_oran/05_figures/phase3_m6/fig_m6_closed_loop_bars.png",
+    "/home/huangxiaolin/safe_drl_oran/05_figures/phase3_m6/fig_m6_safety_parity.png"
+  ],
+  "gates": {
+    "all_formal_gates": true,
+    "hard_safety": {
+      "fallback_rate_le_0p05": true,
+      "p_min_parity_ge_0p95": true,
+      "unsafe_under_le_0p02": true
+    },
+    "limited_degradation": {
+      "correction_within_0p10": true,
+      "mean_D_proj_within_7p5": true,
+      "reward_within_0p05": true,
+      "violation_within_0p03": true
+    },
+    "m5_means": {
+      "adaptation_delay": 1.4000000000000001,
+      "fallback_rate": 0.0,
+      "mean_D_proj": 23.304000000000002,
+      "mean_abs_delta_p_min_vs_oracle": 0.0,
+      "mean_over_reservation_prb": 0.0,
+      "mean_under_reservation_prb": 0.0,
+      "p_min_parity_rate": 1.0,
+      "reward": 0.7338849993924943,
+      "shield_correction_rate": 0.34613333333333335,
+      "unsafe_under_reservation_rate": 0.0,
+      "urllc_violation_rate": 0.06760000000000001
+    },
+    "m6_means": {
+      "adaptation_delay": 1.4000000000000001,
+      "fallback_rate": 0.0,
+      "mean_D_proj": 23.304000000000002,
+      "mean_abs_delta_p_min_vs_oracle": 0.0,
+      "mean_over_reservation_prb": 0.0,
+      "mean_under_reservation_prb": 0.0,
+      "p_min_parity_rate": 1.0,
+      "reward": 0.7338849993924943,
+      "shield_correction_rate": 0.34613333333333335,
+      "unsafe_under_reservation_rate": 0.0,
+      "urllc_violation_rate": 0.06760000000000001
+    },
+    "passed": true
+  },
+  "kind": "phase3_m6_summary",
+  "n_runs": 6,
+  "paired_delta": "/home/huangxiaolin/safe_drl_oran/04_results/phase3_m6/m6_paired_delta.csv",
+  "report": "/home/huangxiaolin/safe_drl_oran/06_reports/M6_CLOSED_LOOP_RESULTS.md",
+  "scenario": "S6_moderate_decay",
+  "schema_version": "safe_oran_phase3_m6",
+  "table": "/home/huangxiaolin/safe_drl_oran/04_results/phase3_m6/m6_table.csv",
+  "warnings": []
+}

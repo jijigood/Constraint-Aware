@@ -38,6 +38,14 @@ def _delta_rows() -> list[dict[str, str]]:
         return list(csv.DictReader(f))
 
 
+def _m6_rows() -> list[dict[str, str]]:
+    path = PROJECT_ROOT / "04_results" / "phase3_m6" / "m6_table.csv"
+    if not path.exists():
+        return []
+    with path.open() as f:
+        return list(csv.DictReader(f))
+
+
 def _delta(rows: list[dict[str, str]], scenario: str, metric: str) -> str:
     rec = next((r for r in rows if r.get("scenario") == scenario and r.get("metric") == metric), None)
     if not rec or not rec.get("mean_delta"):
@@ -59,8 +67,10 @@ def main() -> int:
     phase2a = _load(PROJECT_ROOT / "04_results" / "phase2a" / "analysis.json")
     phase2b = _load(PROJECT_ROOT / "04_results" / "phase2b_v1" / "analysis.json")
     phase2c = _load(PROJECT_ROOT / "04_results" / "phase2c_mini_cer" / "summary.json")
+    phase3_m6 = _load(PROJECT_ROOT / "04_results" / "phase3_m6" / "summary.json")
     phase3_rows = _phase3_rows()
     delta_rows = _delta_rows()
+    m6_rows = _m6_rows()
     p2a_cross = phase2a.get("gate", {}).get("cross_summary", {})
     p2b_gate = phase2b.get("gate", {})
     p2c_gate = phase2c.get("gate", {})
@@ -77,6 +87,27 @@ def main() -> int:
         "field_aware_cer",
         "cer_verifier_solver",
     ))
+    m6_text = ""
+    if m6_rows:
+        m6_table = "\n".join(
+            f"| {r['method']} | {r['reward']} | {r['urllc_violation_rate']} | {r['mean_D_proj']} | "
+            f"{r['shield_correction_rate']} | {r['fallback_rate']} | {r['unsafe_under_reservation_rate']} | "
+            f"{r['p_min_parity_rate']} |"
+            for r in m6_rows
+        )
+        m6_verdict = "passed" if phase3_m6.get("gates", {}).get("passed") else "boundary result"
+        m6_text = f"""
+
+### Phase3-M6: closed-loop CER-z completed
+
+Gate: `{m6_verdict}`.
+
+| Method | Reward | Violation | Mean D_proj | Shield correction | Fallback | Unsafe under-rsv | p_min parity |
+|---|---:|---:|---:|---:|---:|---:|---:|
+{m6_table}
+
+This closes the final system loop: the S6 controller replaces Oracle-z with cached real-LLM field-CER-z while keeping the same verified solver/shield/DRL path.
+"""
 
     text = f"""# Letter Evidence Story
 
@@ -126,6 +157,7 @@ Paired deltas are computed as `M5 - M3`:
 - S6 `Delta D_proj`: {_delta(delta_rows, 'S6_moderate_decay', 'mean_D_proj')}; `Delta violation`: {_delta(delta_rows, 'S6_moderate_decay', 'urllc_violation_rate')}.
 - S5 `Delta adaptation delay`: {_delta(delta_rows, 'S5_combined', 'adaptation_delay')}.
 - S3 is the boundary case: the constraint saturates near the resource ceiling, so M5 has little room to improve and should be reported as a near-infeasible regime.
+{m6_text}
 
 ## Paper Wording
 
