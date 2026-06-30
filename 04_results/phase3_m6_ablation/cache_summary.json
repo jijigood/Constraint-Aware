@@ -1,0 +1,177 @@
+{
+  "arms": {
+    "field_CER_z": {
+      "events": [
+        {
+          "delta_p_min": 0,
+          "fallback_used": false,
+          "over_reservation": 0,
+          "p_min_oracle": 40,
+          "p_min_pred": 40,
+          "sample_id": "normal_00",
+          "t_event": 0,
+          "trigger_type": "initial_normal",
+          "under_reservation": 0,
+          "verifier_passed": true
+        },
+        {
+          "delta_p_min": 0,
+          "fallback_used": false,
+          "over_reservation": 0,
+          "p_min_oracle": 100,
+          "p_min_pred": 100,
+          "sample_id": "upgrade_00",
+          "t_event": 250,
+          "trigger_type": "sla_upgrade",
+          "under_reservation": 0,
+          "verifier_passed": true
+        }
+      ],
+      "fallback_rate": 0.0,
+      "p_min_parity_rate": 1.0,
+      "unsafe_under_reservation_rate": 0.0
+    },
+    "no_retrieval_z": {
+      "events": [
+        {
+          "delta_p_min": 0,
+          "fallback_used": true,
+          "over_reservation": 0,
+          "p_min_oracle": 40,
+          "p_min_pred": 40,
+          "sample_id": "normal_00",
+          "t_event": 0,
+          "trigger_type": "initial_normal",
+          "under_reservation": 0,
+          "verifier_passed": false
+        },
+        {
+          "delta_p_min": 0,
+          "fallback_used": true,
+          "over_reservation": 0,
+          "p_min_oracle": 100,
+          "p_min_pred": 100,
+          "sample_id": "upgrade_00",
+          "t_event": 250,
+          "trigger_type": "sla_upgrade",
+          "under_reservation": 0,
+          "verifier_passed": false
+        }
+      ],
+      "fallback_rate": 1.0,
+      "p_min_parity_rate": 1.0,
+      "unsafe_under_reservation_rate": 0.0
+    },
+    "oracle_z": {
+      "events": [
+        {
+          "delta_p_min": 0,
+          "fallback_used": false,
+          "over_reservation": 0,
+          "p_min_oracle": 40,
+          "p_min_pred": 40,
+          "sample_id": "normal_00",
+          "t_event": 0,
+          "trigger_type": "initial_normal",
+          "under_reservation": 0,
+          "verifier_passed": true
+        },
+        {
+          "delta_p_min": 0,
+          "fallback_used": false,
+          "over_reservation": 0,
+          "p_min_oracle": 100,
+          "p_min_pred": 100,
+          "sample_id": "upgrade_00",
+          "t_event": 250,
+          "trigger_type": "sla_upgrade",
+          "under_reservation": 0,
+          "verifier_passed": true
+        }
+      ],
+      "fallback_rate": 0.0,
+      "p_min_parity_rate": 1.0,
+      "unsafe_under_reservation_rate": 0.0
+    },
+    "ordinary_rag_z": {
+      "events": [
+        {
+          "delta_p_min": 0,
+          "fallback_used": false,
+          "over_reservation": 0,
+          "p_min_oracle": 40,
+          "p_min_pred": 40,
+          "sample_id": "normal_00",
+          "t_event": 0,
+          "trigger_type": "initial_normal",
+          "under_reservation": 0,
+          "verifier_passed": true
+        },
+        {
+          "delta_p_min": 0,
+          "fallback_used": false,
+          "over_reservation": 0,
+          "p_min_oracle": 100,
+          "p_min_pred": 100,
+          "sample_id": "upgrade_00",
+          "t_event": 250,
+          "trigger_type": "sla_upgrade",
+          "under_reservation": 0,
+          "verifier_passed": true
+        }
+      ],
+      "fallback_rate": 0.0,
+      "p_min_parity_rate": 1.0,
+      "unsafe_under_reservation_rate": 0.0
+    },
+    "state_aware_rag_z": {
+      "events": [
+        {
+          "delta_p_min": 0,
+          "fallback_used": false,
+          "over_reservation": 0,
+          "p_min_oracle": 40,
+          "p_min_pred": 40,
+          "sample_id": "normal_00",
+          "t_event": 0,
+          "trigger_type": "initial_normal",
+          "under_reservation": 0,
+          "verifier_passed": true
+        },
+        {
+          "delta_p_min": 0,
+          "fallback_used": false,
+          "over_reservation": 0,
+          "p_min_oracle": 100,
+          "p_min_pred": 100,
+          "sample_id": "upgrade_00",
+          "t_event": 250,
+          "trigger_type": "sla_upgrade",
+          "under_reservation": 0,
+          "verifier_passed": true
+        }
+      ],
+      "fallback_rate": 0.0,
+      "p_min_parity_rate": 1.0,
+      "unsafe_under_reservation_rate": 0.0
+    }
+  },
+  "cache_paths": {
+    "field_CER_z": "/home/huangxiaolin/safe_drl_oran/04_results/phase3_m6_ablation/z_cache__field_CER_z.json",
+    "no_retrieval_z": "/home/huangxiaolin/safe_drl_oran/04_results/phase3_m6_ablation/z_cache__no_retrieval_z.json",
+    "oracle_z": "/home/huangxiaolin/safe_drl_oran/04_results/phase3_m6_ablation/z_cache__oracle_z.json",
+    "ordinary_rag_z": "/home/huangxiaolin/safe_drl_oran/04_results/phase3_m6_ablation/z_cache__ordinary_rag_z.json",
+    "state_aware_rag_z": "/home/huangxiaolin/safe_drl_oran/04_results/phase3_m6_ablation/z_cache__state_aware_rag_z.json"
+  },
+  "event_trace": "/home/huangxiaolin/safe_drl_oran/04_results/phase3_m6_ablation/m6_event_trace.csv",
+  "kind": "m6_rag_ablation_event_caches",
+  "model_tag": "Qwen3-4B",
+  "retriever": "bge",
+  "scenario": "S6_moderate_decay",
+  "schema_version": "safe_oran_m6_rag_ablation_caches",
+  "seeds": [
+    42,
+    43,
+    44
+  ]
+}

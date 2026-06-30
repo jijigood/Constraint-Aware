@@ -71,6 +71,10 @@ Gate: `passed`.
 This closes the final system loop: the S6 controller replaces Oracle-z with cached real-LLM field-CER-z while keeping the same verified solver/shield/DRL path.
 
 
+### Phase3-M6 RAG ablation: retrieval errors become control errors
+
+The M6 replay ablation compares oracle, no-retrieval, ordinary RAG, state-aware RAG, and field-CER z-caches under the same S6 M5 policies. It makes the RAG contribution visible: field-CER remains oracle-parity, while weaker retrieval arms can alter `p_min` through over/under reservation or fallback.
+
 ## Paper Wording
 
 Use this claim:

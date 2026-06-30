@@ -1,0 +1,41 @@
+{
+  "S6_moderate_decay|sla=0.9900|t=0": {
+    "channel_margin_policy": "nominal",
+    "citations": [
+      "E_SCENE_NORMAL",
+      "E_REL_UPGRADE_999",
+      "E_FORMULA_LOAD_BACKLOG"
+    ],
+    "formula_id": "load_backlog_over_spectral_efficiency",
+    "priority_rank": 1,
+    "reliability_target": 0.999,
+    "retrieved_ids": [
+      "E_SCENE_NORMAL",
+      "E_DISTR_LEGACY_NOMINAL",
+      "E_DISTR_GENERIC_CONSTRAINT",
+      "E_FORMULA_LOAD_BACKLOG",
+      "E_REL_UPGRADE_999"
+    ],
+    "service_rule": "serve_offered_plus_backlog",
+    "verified": true
+  },
+  "S6_moderate_decay|sla=0.9990|t=250": {
+    "channel_margin_policy": "pessimistic_quantile",
+    "citations": [
+      "E_REL_UPGRADE_999",
+      "E_SCENE_UPGRADE"
+    ],
+    "formula_id": "load_backlog_over_spectral_efficiency",
+    "priority_rank": 1,
+    "reliability_target": 0.999,
+    "retrieved_ids": [
+      "E_REL_UPGRADE_999",
+      "E_SCENE_UPGRADE",
+      "E_REL_CONFLICT_HIGH",
+      "E_REL_NORMAL_99",
+      "E_DISTR_GENERIC_CONSTRAINT"
+    ],
+    "service_rule": "serve_offered_plus_backlog",
+    "verified": true
+  }
+}

@@ -246,7 +246,7 @@ G4 gate: **{'PASS' if g4['PASS'] else 'FAIL'}** — {json.dumps(g4['checks'])}
 The benchmark is a controlled, field-labelled set with generic intents; the
 `reliability_target` field is reported as control-inert under this solver. The
 900-state replay is a one-step counterfactual (no backlog feedback) — closed-loop
-is the deferred M6 step. No real LLM is in this slice.
+is now covered by the Phase3-M6 closed-loop and RAG ablation artifacts. No real LLM is in this slice.
 
 ## Artifacts
 """ + "\n".join(f"- `{p.replace(str(PROJECT_ROOT) + '/', '')}`" for p in figs) + """

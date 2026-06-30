@@ -210,7 +210,8 @@ def write_report(summaries, v2, cis, gate_res, figs) -> None:
                      "under-reserve. Observed verifier unsafe rates: " + "; ".join(verifier_warts) + ".\n")
     lines.append("\n## Honest boundaries\n")
     lines.append("- Controlled field-labelled corpus (not large-scale real specs). Generations cached at temp=0; "
-                 "`reliability_target` is control-inert under this solver. Closed-loop (M6) still deferred.\n")
+                 "`reliability_target` is control-inert under this solver. Closed-loop M6 and the M6 RAG "
+                 "ablation are reported separately in the Phase3-M6 artifacts.\n")
     lines.append("## Artifacts\n")
     for p in figs:
         lines.append(f"- `{p.replace(str(PROJECT_ROOT) + '/', '')}`")

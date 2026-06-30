@@ -69,7 +69,7 @@
 
 ## Honest boundaries
 
-- Controlled field-labelled corpus (not large-scale real specs). Generations cached at temp=0; `reliability_target` is control-inert under this solver. Closed-loop (M6) still deferred.
+- Controlled field-labelled corpus (not large-scale real specs). Generations cached at temp=0; `reliability_target` is control-inert under this solver. Closed-loop M6 and M6 RAG ablation are reported in the Phase3-M6 artifacts.
 
 ## Artifacts
 

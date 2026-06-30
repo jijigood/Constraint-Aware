@@ -77,7 +77,8 @@ G4 gate: **PASS** — {"cer_matches_oracle_efficiency": true, "cer_safe_by_const
 The benchmark is a controlled, field-labelled set with generic intents; the
 `reliability_target` field is reported as control-inert under this solver. The
 900-state replay is a one-step counterfactual (no backlog feedback) — closed-loop
-is the deferred M6 step. No real LLM is in this slice.
+is now covered by the Phase3-M6 closed-loop and RAG ablation artifacts. No real
+LLM is in this slice.
 
 ## Artifacts
 - `05_figures/phase2c_v2/fig_field_accuracy_by_arm.png`
