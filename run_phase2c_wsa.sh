@@ -44,9 +44,14 @@ wait_ready() {
 }
 
 stop_vllm() {
-  pkill -f "vllm.entrypoints.openai.api_server" 2>/dev/null || true
+  # Avoid `pkill -f ...` here: when this script is launched through `bash -lc`,
+  # the pattern can match the current shell command and kill itself. Stop by port
+  # instead, which is the actual resource the next vLLM server needs.
+  if command -v fuser >/dev/null 2>&1; then
+    fuser -k "${PORT}/tcp" 2>/dev/null || true
+  fi
   for _ in $(seq 1 30); do
-    ss -ltn 2>/dev/null | grep -q "127.0.0.1:${PORT} " || return 0
+    ss -ltn 2>/dev/null | grep -q ":${PORT} " || return 0
     sleep 2
   done
 }

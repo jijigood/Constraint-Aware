@@ -133,13 +133,8 @@ def figures(summaries, v2) -> list[str]:
 
 
 def gate(summaries) -> dict[str, Any]:
-    key14 = [(t, r) for (t, r) in summaries if abs(_size_key(t) - 14.0) < 1e-6]
-    if not key14:
-        # fall back to the largest available model
-        big = max((t for t, _ in summaries), key=_size_key, default=None)
-        key14 = [(t, r) for (t, r) in summaries if t == big]
     checks = {}
-    for (t, r) in key14:
+    for (t, r) in sorted(summaries, key=lambda x: (_size_key(x[0]), x[1])):
         a = summaries[(t, r)]["arms"]
         f, o, v = a["field_aware_cer_llm"], a["ordinary_rag_llm"], a["field_aware_cer_llm_verifier"]
         checks[f"{t}/{r}"] = {
@@ -148,7 +143,7 @@ def gate(summaries) -> dict[str, Any]:
             "verifier_safe": (v["under_reservation_rate"] or 0) <= 1e-9,
             "verifier_cited": v["citation_validity"] >= 0.9,
         }
-    survived = any(c["field_margin_beats_ordinary"] and c["field_under_le_ordinary"] for c in checks.values())
+    survived = all(c["field_margin_beats_ordinary"] and c["field_under_le_ordinary"] for c in checks.values())
     return {"per_model_retriever": checks, "advantage_survives": survived}
 
 
@@ -201,6 +196,18 @@ def write_report(summaries, v2, cis, gate_res, figs) -> None:
                  f"Per (model,retriever) checks: {json.dumps(gate_res['per_model_retriever'])}\n")
     lines.append("- The verifier arm rejects any direct-numeric leak and fail-closes (C3), keeping unsafe "
                  "under-reservation ~0 with grounded citations.\n")
+    verifier_warts = []
+    for t in tags:
+        for r in retrievers:
+            if (t, r) not in summaries:
+                continue
+            v = summaries[(t, r)]["arms"]["field_aware_cer_llm_verifier"]
+            rate = v["under_reservation_rate"] or 0.0
+            if rate > 0:
+                verifier_warts.append(f"{t}/{r}: {rate:.3f} ({round(rate * v['n'])}/{v['n']})")
+    if verifier_warts:
+        lines.append("- Verifier edge case, not hidden: schema-valid but semantically wrong margin choices can still "
+                     "under-reserve. Observed verifier unsafe rates: " + "; ".join(verifier_warts) + ".\n")
     lines.append("\n## Honest boundaries\n")
     lines.append("- Controlled field-labelled corpus (not large-scale real specs). Generations cached at temp=0; "
                  "`reliability_target` is control-inert under this solver. Closed-loop (M6) still deferred.\n")

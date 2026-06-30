@@ -60,9 +60,11 @@
 
 - All arms see the state summary, so this is the stringent test: does retrieval help *beyond* the LLM's own reasoning over state? The CER edge is expected to concentrate on **provenance/conflict** (degraded, conflict, noisy) where state alone cannot fix the policy.
 
-- G-WSA gate: advantage_survives = **True**. Per (model,retriever) checks: {"Qwen3-14B/bge": {"field_margin_beats_ordinary": true, "field_under_le_ordinary": true, "verifier_safe": false, "verifier_cited": true}, "Qwen3-14B/tfidf": {"field_margin_beats_ordinary": true, "field_under_le_ordinary": true, "verifier_safe": true, "verifier_cited": true}}
+- G-WSA gate: advantage_survives = **True**. Per (model,retriever) checks: {"Qwen3-1.7B/bge": {"field_margin_beats_ordinary": true, "field_under_le_ordinary": true, "verifier_safe": true, "verifier_cited": true}, "Qwen3-1.7B/tfidf": {"field_margin_beats_ordinary": true, "field_under_le_ordinary": true, "verifier_safe": true, "verifier_cited": true}, "Qwen3-4B/bge": {"field_margin_beats_ordinary": true, "field_under_le_ordinary": true, "verifier_safe": false, "verifier_cited": true}, "Qwen3-4B/tfidf": {"field_margin_beats_ordinary": true, "field_under_le_ordinary": true, "verifier_safe": true, "verifier_cited": true}, "Qwen3-14B/bge": {"field_margin_beats_ordinary": true, "field_under_le_ordinary": true, "verifier_safe": false, "verifier_cited": true}, "Qwen3-14B/tfidf": {"field_margin_beats_ordinary": true, "field_under_le_ordinary": true, "verifier_safe": true, "verifier_cited": true}, "Qwen3-32B/bge": {"field_margin_beats_ordinary": true, "field_under_le_ordinary": true, "verifier_safe": false, "verifier_cited": true}, "Qwen3-32B/tfidf": {"field_margin_beats_ordinary": true, "field_under_le_ordinary": true, "verifier_safe": true, "verifier_cited": true}}
 
 - The verifier arm rejects any direct-numeric leak and fail-closes (C3), keeping unsafe under-reservation ~0 with grounded citations.
+
+- Verifier edge case, not hidden: schema-valid but semantically wrong margin choices can still under-reserve. Observed verifier unsafe rates: Qwen3-4B/bge: 0.019 (3/160); Qwen3-14B/bge: 0.019 (3/160); Qwen3-32B/bge: 0.019 (3/160).
 
 
 ## Honest boundaries
