@@ -1,0 +1,66 @@
+{
+  "events": [
+    {
+      "cache_key": "S6_moderate_decay|sla=0.9900|t=0",
+      "cer_p_min": 40,
+      "channel_margin_policy": "nominal",
+      "citations": [
+        "E_SCENE_NORMAL",
+        "E_FORMULA_LOAD_BACKLOG",
+        "E_DISTR_LEGACY_NOMINAL"
+      ],
+      "delta_p_min_vs_oracle": 0,
+      "event_t": 0,
+      "oracle_p_min": 40,
+      "reliability_target": 0.99,
+      "retrieved_ids": [
+        "E_SCENE_NORMAL",
+        "E_FORMULA_LOAD_BACKLOG",
+        "E_DISTR_GENERIC_CONSTRAINT",
+        "E_REL_UPGRADE_999",
+        "E_REL_NORMAL_99",
+        "E_DISTR_LEGACY_NOMINAL"
+      ],
+      "sample_id": "normal_00",
+      "sla": 0.99,
+      "unsafe_under_reservation": false,
+      "verifier_passed": true
+    },
+    {
+      "cache_key": "S6_moderate_decay|sla=0.9990|t=250",
+      "cer_p_min": 100,
+      "channel_margin_policy": "pessimistic_quantile",
+      "citations": [
+        "E_REL_UPGRADE_999",
+        "E_FORMULA_LOAD_BACKLOG"
+      ],
+      "delta_p_min_vs_oracle": 0,
+      "event_t": 250,
+      "oracle_p_min": 100,
+      "reliability_target": 0.999,
+      "retrieved_ids": [
+        "E_REL_UPGRADE_999",
+        "E_REL_CONFLICT_HIGH",
+        "E_FORMULA_LOAD_BACKLOG",
+        "E_REL_NORMAL_99"
+      ],
+      "sample_id": "upgrade_00",
+      "sla": 0.999,
+      "unsafe_under_reservation": false,
+      "verifier_passed": true
+    }
+  ],
+  "gate": {
+    "n_events": 2,
+    "p_min_parity_rate": 1.0,
+    "passed": true,
+    "unsafe_under_reservation_rate": 0.0,
+    "verifier_pass_rate": 1.0
+  },
+  "kind": "m6_event_level_cer_z_cache",
+  "model_tag": "Qwen3-4B",
+  "retriever": "bge",
+  "scenario": "S6_moderate_decay",
+  "schema_version": "safe_oran_phase3_m6_z_cache",
+  "source_generation_cache": "/home/huangxiaolin/safe_drl_oran/04_results/phase2c_wsa/generations/Qwen3-4B__bge__field_aware_cer_llm.jsonl"
+}

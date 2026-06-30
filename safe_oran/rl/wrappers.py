@@ -36,6 +36,7 @@ class ConstraintAwareWrapper(gym.Wrapper):
         self.solver = solver or DeterministicSolver(self._cfg())
         self.verifier = verifier or Verifier()
         self.z_cache = z_cache or ZCache()
+        self.oracle_z_cache = ZCache()
         self.use_shield = bool(use_shield)
         self.static_p_min = static_p_min
         self.use_state_aug = bool(use_state_aug)
@@ -115,23 +116,27 @@ class ConstraintAwareWrapper(gym.Wrapper):
         if result.passed and result.spec is not None:
             self.z_current = result.spec.to_dict()
 
-    def _compute_p_min(self, state: dict[str, Any]) -> tuple[int, bool, str]:
+    def _compute_p_min(self, state: dict[str, Any]) -> tuple[int, bool, str, bool]:
         if not self.use_shield:
-            return 0, False, "shield_disabled"
+            return 0, False, "shield_disabled", False
         if self.static_p_min is not None:
-            return int(self.static_p_min), False, "static"
+            return int(self.static_p_min), False, "static", False
         retrieved_ids = self.z_current.get("retrieved_ids", self.z_current.get("rag_evidence_ids", []))
         if self.verifier_on:
             result = self.verifier.verify(self.z_current, retrieved_ids, state, z_mode=self.z_mode)
             if not result.passed:
                 z = self.verifier.fail_closed_spec(self.current_sla)
                 out = self.solver.solve(z, state)
-                return out.p_min, out.infeasible, f"fail_closed:{result.reason}"
+                return out.p_min, out.infeasible, f"fail_closed:{result.reason}", True
             spec = result.spec or ConstraintSpec.from_mapping(self.z_current)
         else:
             spec = ConstraintSpec.from_mapping(self.z_current)
         out = self.solver.solve(spec, state)
-        return out.p_min, out.infeasible, out.reason
+        return out.p_min, out.infeasible, out.reason, False
+
+    def _oracle_p_min(self, state: dict[str, Any]) -> int:
+        oracle_z = self.oracle_z_cache.get(self.scenario, int(state.get("t", 0)), self.current_sla)
+        return int(self.solver.solve(oracle_z, state).p_min)
 
     def reset(self, **kwargs):
         obs_raw, info = self.env.reset(**kwargs)
@@ -140,7 +145,7 @@ class ConstraintAwareWrapper(gym.Wrapper):
         self.prev_g = 0.5
         self.prev_regime = self.scenario
         state = self._state()
-        self.p_min, _, _ = self._compute_p_min(state)
+        self.p_min, _, _, _ = self._compute_p_min(state)
         return self._obs(obs_raw), info
 
     def step(self, action_idx: int):
@@ -153,7 +158,9 @@ class ConstraintAwareWrapper(gym.Wrapper):
 
         self.prev_g = float(state_t["channel"])
         self.prev_regime = state_t["regime"]
-        p_min_action, infeasible, pmin_reason = self._compute_p_min(state_t)
+        p_min_action, infeasible, pmin_reason, z_fallback = self._compute_p_min(state_t)
+        p_min_oracle = self._oracle_p_min(state_t)
+        delta_p_min_vs_oracle = int(p_min_action) - int(p_min_oracle)
 
         raw_idx = int(action_idx)
         if self.use_shield:
@@ -167,7 +174,7 @@ class ConstraintAwareWrapper(gym.Wrapper):
 
         if self.use_state_aug:
             state_next = self._state()
-            self.p_min, _, _ = self._compute_p_min(state_next)
+            self.p_min, _, _, _ = self._compute_p_min(state_next)
         else:
             self.p_min = p_min_action
 
@@ -182,6 +189,10 @@ class ConstraintAwareWrapper(gym.Wrapper):
             "shield_corrected": bool(safe_idx != raw_idx),
             "p_min": int(p_min_action),
             "p_min_next": int(self.p_min),
+            "p_min_oracle": int(p_min_oracle),
+            "delta_p_min_vs_oracle": int(delta_p_min_vs_oracle),
+            "z_fallback": bool(z_fallback),
+            "unsafe_under_reservation": bool(delta_p_min_vs_oracle < 0),
             "D_proj": int(d_proj),
             "infeasible": bool(infeasible),
             "pmin_reason": pmin_reason,

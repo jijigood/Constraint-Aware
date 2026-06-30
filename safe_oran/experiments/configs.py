@@ -6,7 +6,8 @@ BASELINE_CONFIGS = {
     "M3_dynamic_no_aug": dict(use_shield=True, static_p_min=None, use_state_aug=False, proj_penalty=0.0, z_mode="oracle", verifier_on=True),
     "M4_penalty_no_aug": dict(use_shield=True, static_p_min=None, use_state_aug=False, proj_penalty=0.01, z_mode="oracle", verifier_on=True),
     "M5_constraint_aware": dict(use_shield=True, static_p_min=None, use_state_aug=True, proj_penalty=0.0, z_mode="oracle", verifier_on=True),
-    "M6_full_cer": dict(use_shield=True, static_p_min=None, use_state_aug=True, proj_penalty=0.0, z_mode="cer", verifier_on=True),
+    "M6_field_CER_z": dict(use_shield=True, static_p_min=None, use_state_aug=True, proj_penalty=0.0, z_mode="cer", verifier_on=True, require_citations=True),
+    "M6_full_cer": dict(use_shield=True, static_p_min=None, use_state_aug=True, proj_penalty=0.0, z_mode="cer", verifier_on=True, require_citations=True),
     "M6_noisy_vrf_on": dict(use_shield=True, static_p_min=None, use_state_aug=True, proj_penalty=0.0, z_mode="noisy", verifier_on=True),
     "M6_noisy_vrf_off": dict(use_shield=True, static_p_min=None, use_state_aug=True, proj_penalty=0.0, z_mode="noisy", verifier_on=False),
 }

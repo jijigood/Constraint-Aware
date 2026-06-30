@@ -46,10 +46,11 @@ def make_constraint_env(
     env_cfg = scenario_env_config(cfg, scenario_cfg)
     base = make_legacy_env(scenario, seed=seed, cfg=env_cfg)
     bl_cfg = dict(BASELINE_CONFIGS[method])
+    require_citations = bool(bl_cfg.pop("require_citations", False))
     return ConstraintAwareWrapper(
         base,
         solver=DeterministicSolver(env_cfg),
-        verifier=Verifier(),
+        verifier=Verifier(require_citations=require_citations),
         z_cache=z_cache or ZCache(),
         scenario=scenario,
         sla_schedule=scenario_cfg["sla_schedule"],
